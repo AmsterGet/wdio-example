@@ -64,9 +64,9 @@ exports.config = {
   // port: 443,
   // protocol: 'https',
   // path: '/',
-  // user: process.env.SAUCE_USERNAME,
-  // key: process.env.SAUCE_ACCESS_KEY,
-  // region: process.env.SAUCE_REGION || 'eu-central-1',
+  user: process.env.SAUCE_USERNAME,
+  key: process.env.SAUCE_ACCESS_KEY,
+  region: process.env.SAUCE_REGION || 'eu-central-1',
   //
   // ==================
   // Specify Test Files
@@ -105,24 +105,19 @@ exports.config = {
   //
   capabilities: [
     {
+      'wdio:maxInstances': 10,
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
       browserName: 'chrome',
       browserVersion: 'latest',
-      //
-      // Chrome specific options
-      'goog:chromeOptions': {
-        // to run chrome headless the following flags are required
-        // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-        // args: ['--headless', '--disable-gpu'],
-      },
-      //
-      // Note: Appium capabilities (appium:locationServicesEnabled, appium:locationServicesAuthorized)
-      // are only needed for mobile/Appium tests, not for browser tests.
-      // If you need mobile testing, uncomment and configure these:
-      // 'appium:locationServicesEnabled': false,
-      // 'appium:locationServicesAuthorized': false,
+      platformName: 'Linux',
+      // // Chrome specific options
+      // 'goog:chromeOptions': {
+      //   // to run chrome headless the following flags are required
+      //   // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+      //   // args: ['--headless', '--disable-gpu'],
+      // },
       //
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
